@@ -6,6 +6,88 @@
         <title>ToDo App</title>
     </head>
     <body>
-        <h1>Tip Calculator</h1>
+        <div class="container">
+            <section class="calculator">
+                <h1 class="calculator__title">Tip Calc+</h1>
+                <div class="card">
+                    <div class="card__labels">
+                        <span class="card__span">Bills</span>
+                        <div class="label">
+                            <span class="label__price">$200.50</span>
+                            <span class="label__delete">x</span>
+                        </div>
+                        <div class="label">
+                            <span class="label__price">$100.50</span>
+                            <span class="label__delete">x</span>
+                        </div>
+                        <div class="label">
+                            <span class="label__price">$250.80</span>
+                            <span class="label__delete">x</span>
+                        </div>
+                        <div class="label">
+                            <span class="label__price">$10.50</span>
+                            <span class="label__delete">x</span>
+                        </div>
+                        <div class="label">
+                            <span class="label__price">$50.50</span>
+                            <span class="label__delete">x</span>
+                        </div>
+                    </div>
+                    <div class="card__tip">
+                        <span class="card__span">Tip</span>
+                        <span class="card__total-tip">$200</span>
+                    </div>
+                    <div class="card__total">
+                        <span class="card__span">Total</span>
+                        <span class="card__total-cost">$1000</span>
+                    </div>
+                </div>
+                <div class="card">
+                    <div class="card__percentage">
+                        <span class="card__span">Tip</span>
+                        <span class="card__percentage-tip">20%</span>
+                        <input
+                            type="range"
+                            class="card__percentage-range"
+                            step="5"
+                        />
+                    </div>
+                    <div class="card__split">
+                        <span class="card__span">Split</span>
+                        <span class="card__split-tip">2</span>
+                        <input
+                            type="range"
+                            class="card__split-range"
+                            step="1"
+                            min="1"
+                            max="10"
+                        />
+                    </div>
+                    <div class="card__total-split">
+                        <span class="card__span">Split total</span>
+                        <span class="card__total-split-cost">$100</span>
+                    </div>
+                </div>
+                <div class="card">
+                    <div class="card__wallet">
+                        <div class="card__wallet-title">Wallet</div>
+                        <div class="card__wallet-title">Spending</div>
+                    </div>
+                    <div class="card__wallet">
+                        <div class="card__wallet">$2000</div>
+                        <div class="card__spending">$100</div>
+                    </div>
+                </div>
+                <div class="add-bill">
+                    <input
+                        type="text"
+                        min="0"
+                        max="1000000"
+                        class="add-bill__input"
+                    />
+                    <button class="add-bill__btn">+</button>
+                </div>
+            </section>
+        </div>
     </body>
 </html>
