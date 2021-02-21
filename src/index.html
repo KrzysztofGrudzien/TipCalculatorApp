@@ -3,7 +3,18 @@
     <head>
         <meta charset="UTF-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-        <title>ToDo App</title>
+        <link
+            rel="stylesheet"
+            href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.min.css"
+            integrity="sha512-NhSC1YmyruXifcj/KFRWoC561YpHpc5Jtzgvbuzx5VozKpWvQ+4nXhPdFgmx8xqexRcpAglTj9sIBWINXa8x5w=="
+            crossorigin="anonymous"
+        />
+        <link rel="preconnect" href="https://fonts.gstatic.com" />
+        <link
+            href="https://fonts.googleapis.com/css2?family=Montserrat:wght@200;400;500;600;700;800&display=swap"
+            rel="stylesheet"
+        />
+        <title>Tip Calculator</title>
     </head>
     <body>
         <div class="container">
@@ -14,23 +25,38 @@
                         <span class="card__span">Bills</span>
                         <div class="label">
                             <span class="label__price">$200.50</span>
-                            <span class="label__delete">x</span>
+                            <img
+                                src="./assets/icons/clear.svg"
+                                class="label__delete"
+                            />
                         </div>
                         <div class="label">
                             <span class="label__price">$100.50</span>
-                            <span class="label__delete">x</span>
+                            <img
+                                src="./assets/icons/clear.svg"
+                                class="label__delete"
+                            />
                         </div>
                         <div class="label">
                             <span class="label__price">$250.80</span>
-                            <span class="label__delete">x</span>
+                            <img
+                                src="./assets/icons/clear.svg"
+                                class="label__delete"
+                            />
                         </div>
                         <div class="label">
                             <span class="label__price">$10.50</span>
-                            <span class="label__delete">x</span>
+                            <img
+                                src="./assets/icons/clear.svg"
+                                class="label__delete"
+                            />
                         </div>
                         <div class="label">
                             <span class="label__price">$50.50</span>
-                            <span class="label__delete">x</span>
+                            <img
+                                src="./assets/icons/clear.svg"
+                                class="label__delete"
+                            />
                         </div>
                     </div>
                     <div class="card__tip">
@@ -74,16 +100,15 @@
                         <div class="card__wallet-title">Spending</div>
                     </div>
                     <div class="card__wallet">
-                        <div class="card__wallet">$2000</div>
-                        <div class="card__spending">$100</div>
+                        <div class="card__wallet-amount">$2000</div>
+                        <div class="card__wallet-spending">$100</div>
                     </div>
                 </div>
                 <div class="add-bill">
                     <input
                         type="text"
-                        min="0"
-                        max="1000000"
                         class="add-bill__input"
+                        placeholder="cost of bill"
                     />
                     <button class="add-bill__btn">+</button>
                 </div>
