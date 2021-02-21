@@ -1,0 +1,26 @@
+.add-bill {
+    position: relative;
+
+    &__input {
+        border: none;
+        border-radius: 0.7rem;
+        font-size: 2rem;
+        height: 5.8rem;
+        padding-left: 2rem;
+        width: 100%;
+    }
+
+    &__btn {
+        border: none;
+        border-radius: 0 0.7rem 0.7rem 0;
+        background-color: $color-primary;
+        color: $color-light;
+        cursor: pointer;
+        font-size: 4rem;
+        height: 100%;
+        position: absolute;
+        top: 0;
+        right: 0;
+        width: 6rem;
+    }
+}
