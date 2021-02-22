@@ -9,6 +9,7 @@ const walletAmount = document.querySelector('.card__wallet-amount--js');
 const walletSepnding = document.querySelector('.card__wallet-spending--js');
 const billInput = document.querySelector('.add-bill__input--js');
 const btnAddBill = document.querySelector('.add-bill__btn--js');
+const cardLabels = document.querySelector('.card__labels--js');
 
 const DOMElements = {
     totalTip,
@@ -22,6 +23,7 @@ const DOMElements = {
     walletSepnding,
     billInput,
     btnAddBill,
+    cardLabels,
 };
 
 export default DOMElements;
