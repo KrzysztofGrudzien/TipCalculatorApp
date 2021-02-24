@@ -45,20 +45,20 @@ const addBill = () => {
     }
 
     DOMElements.walletAmount.textContent = `$${FormatCost(walletAmount)}`;
-
-    DOMElements.percentageRange.addEventListener('input', e => {
-        DOMElements.percentageTip.textContent = `${e.target.value}%`;
-        DOMElements.totalTip.textContent = `$${FormatCost(
-            (e.target.value * walletSpending) / 100,
-        )}`;
-    });
-
-    DOMElements.splitRange.addEventListener('input', e => {
-        DOMElements.splitTip.textContent = e.target.value;
-        DOMElements.totalSplitCost.textContent = `$${FormatCost(
-            walletSpending / e.target.value,
-        )}`;
-    });
 };
 
 DOMElements.btnAddBill.addEventListener('click', addBill);
+
+DOMElements.percentageRange.addEventListener('input', e => {
+    DOMElements.percentageTip.textContent = `${e.target.value}%`;
+    DOMElements.totalTip.textContent = `$${FormatCost(
+        (e.target.value * walletSpending) / 100,
+    )}`;
+});
+
+DOMElements.splitRange.addEventListener('input', e => {
+    DOMElements.splitTip.textContent = e.target.value;
+    DOMElements.totalSplitCost.textContent = `$${FormatCost(
+        walletSpending / e.target.value,
+    )}`;
+});
