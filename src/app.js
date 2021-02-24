@@ -1,14 +1,15 @@
 import './sass/build.scss';
 import DOMElements from './helpers/DOMElements';
 import IDGenerator from './helpers/IDGenerator';
+import FormatCost from './helpers/FormatCost';
 
 const allBills = [];
+let walletAmount = 2000;
+let walletSpending = 0;
 
 const addBill = () => {
     let id = IDGenerator();
-    let billValue = Number(
-        Math.round(DOMElements.billInput.value + 'e+2') + 'e-2',
-    );
+    let billValue = FormatCost(DOMElements.billInput.value);
 
     if (billValue <= 0) return;
 
@@ -30,8 +31,38 @@ const addBill = () => {
         /> 
     `;
     labelContainer.innerHTML = labelContent;
-
     DOMElements.cardLabels.appendChild(labelContainer);
+
+    for (let bill of allBills) {
+        walletSpending += bill.billValue;
+        walletAmount -= bill.billValue;
+
+        DOMElements.walletSpending.textContent = `$${FormatCost(
+            walletSpending,
+        )}`;
+
+        DOMElements.totalCost.textContent = `$${FormatCost(walletSpending)}`;
+    }
+
+    DOMElements.walletAmount.textContent = `$${FormatCost(walletAmount)}`;
 };
 
 DOMElements.btnAddBill.addEventListener('click', addBill);
+
+const percentTip = e => {
+    DOMElements.percentageTip.textContent = `${e.target.value}%`;
+    DOMElements.totalTip.textContent = `$${FormatCost(
+        (e.target.value * walletSpending) / 100,
+    )}`;
+};
+
+DOMElements.percentageRange.addEventListener('input', percentTip);
+
+const splitTip = e => {
+    DOMElements.splitTip.textContent = e.target.value;
+    DOMElements.totalSplitCost.textContent = `$${FormatCost(
+        walletSpending / e.target.value,
+    )}`;
+};
+
+DOMElements.splitRange.addEventListener('input', splitTip);
