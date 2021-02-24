@@ -49,16 +49,20 @@ const addBill = () => {
 
 DOMElements.btnAddBill.addEventListener('click', addBill);
 
-DOMElements.percentageRange.addEventListener('input', e => {
+const percentTip = e => {
     DOMElements.percentageTip.textContent = `${e.target.value}%`;
     DOMElements.totalTip.textContent = `$${FormatCost(
         (e.target.value * walletSpending) / 100,
     )}`;
-});
+};
 
-DOMElements.splitRange.addEventListener('input', e => {
+DOMElements.percentageRange.addEventListener('input', percentTip);
+
+const splitTip = e => {
     DOMElements.splitTip.textContent = e.target.value;
     DOMElements.totalSplitCost.textContent = `$${FormatCost(
         walletSpending / e.target.value,
     )}`;
-});
+};
+
+DOMElements.splitRange.addEventListener('input', splitTip);
