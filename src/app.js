@@ -9,6 +9,18 @@ const calculateBill = () => {
 
 DOMElements.btnCalculate.addEventListener('click', calculateBill);
 
+const showApp = () => {
+    DOMElements.calculator.style.display = 'flex';
+};
+
+DOMElements.btnOpenApp.addEventListener('click', showApp);
+
+const closeApp = () => {
+    DOMElements.calculator.style.display = 'none';
+};
+
+DOMElements.btnCloseApp.addEventListener('click', closeApp);
+
 // const allBills = [];
 //
 // const calculateBill = () => {
