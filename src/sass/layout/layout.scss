@@ -1,21 +1,8 @@
 .container {
-    display: flex;
-    justify-content: center;
-    max-width: 100%;
-    width: 48rem;
-}
-
-.calculator {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
+    display: grid;
+    grid-template-columns: repeat(12, 1fr);
+    grid-template-rows: 6rem auto 3rem;
     max-width: 90%;
-    width: 46rem;
-
-    &__title {
-        color: $color-light;
-        font-size: 2rem;
-        font-weight: 800;
-        letter-spacing: 1px;
-    }
+    margin: 0 auto;
+    width: 124rem;
 }

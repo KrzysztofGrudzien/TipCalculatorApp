@@ -10,97 +10,314 @@
             crossorigin="anonymous"
         />
         <link rel="preconnect" href="https://fonts.gstatic.com" />
+        <link rel="preconnect" href="https://fonts.gstatic.com" />
         <link
-            href="https://fonts.googleapis.com/css2?family=Montserrat:wght@200;400;500;600;700;800&display=swap"
+            href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800;900&display=swap"
             rel="stylesheet"
         />
         <title>Tip Calculator</title>
     </head>
     <body>
         <div class="container">
-            <section class="calculator">
-                <h1 class="calculator__title">Tip Calc+</h1>
-                <div class="card">
-                    <div class="card__labels card__labels--js">
-                        <span class="card__span">Bills</span>
+            <header class="header">
+                <h1 class="header__title">Tip Calc+</h1>
+            </header>
+            <main class="main">
+                <section class="hero">
+                    <div>
+                        <h2 class="hero__title">tip calculator app</h2>
+                        <p class="hero__description">
+                            A very simple PWA Tip Calculator based on HTML, CSS
+                            and pure JavaScript. This app will help you
+                            management your bills and tips when you will spend
+                            free time in the restaurants with friends or single
+                            for example. It doesn’t matter what type of currency
+                            you want to pay because this app uses API and counts
+                            from many popular currencies to PL złoty dynamicly.
+                        </p>
+                        <button class="btn btn--js">Open App</button>
                     </div>
-                    <div class="card__tip">
-                        <span class="card__span">Tip</span>
-                        <span class="card__total-tip card__total-tip--js"
-                            >$0</span
-                        >
+                    <div>
+                        <img src="./assets/img/burger.svg" alt="burger icon" />
                     </div>
-                    <div class="card__total">
-                        <span class="card__span">Total</span>
-                        <span class="card__total-cost card__total-cost--js"
-                            >$0</span
-                        >
-                    </div>
-                </div>
-                <div class="card">
-                    <div class="card__percentage">
-                        <span class="card__span">Tip</span>
-                        <span
-                            class="card__percentage-tip card__percentage-tip--js"
-                            >0%</span
-                        >
-                        <input
-                            type="range"
-                            class="card__percentage-range card__percentage-range--js"
-                            min="2"
-                            max="100"
-                            value="2"
+                </section>
+                <section class="benefits">
+                    <div>
+                        <h2 class="benefits__title">
+                            Key benefits of tip calculator
+                        </h2>
+                        <img
+                            src="./assets/img/service-wine.svg"
+                            alt="service wine image"
                         />
                     </div>
-                    <div class="card__split">
-                        <span class="card__span">Split</span>
-                        <span class="card__split-tip card__split-tip--js"
-                            >1</span
-                        >
-                        <input
-                            type="range"
-                            class="card__split-range card__split-range--js"
-                            step="1"
-                            min="1"
-                            max="10"
-                            value="1"
-                        />
+                    <div>
+                        <ul class="benefits__list">
+                            <li class="benefits__item">
+                                <div class="benefits__item-icon">
+                                    <img
+                                        src="./assets/icons/warning.svg"
+                                        alt=""
+                                    />
+                                </div>
+                                <div class="benefits__item-container">
+                                    <h3 class="benefits__item-title">
+                                        Less problems
+                                    </h3>
+                                    <p class="benefits__item-description">
+                                        Save time, avoiding mistakes during
+                                        calculation your bill and tip
+                                    </p>
+                                </div>
+                            </li>
+                            <li class="benefits__item">
+                                <div class="benefits__item-icon">
+                                    <img
+                                        src="./assets/icons/currency.svg"
+                                        alt=""
+                                    />
+                                </div>
+                                <div class="benefits__item-container">
+                                    <h3 class="benefits__item-title">
+                                        Handling multi currencies
+                                    </h3>
+                                    <p class="benefits__item-description">
+                                        Connect with API and count your bills
+                                        and tips using different kind of
+                                        currencies to Polish złoty.
+                                    </p>
+                                </div>
+                            </li>
+                            <li class="benefits__item">
+                                <div class="benefits__item-icon">
+                                    <img
+                                        src="./assets/icons/history.svg"
+                                        alt=""
+                                    />
+                                </div>
+                                <div class="benefits__item-container">
+                                    <h3 class="benefits__item-title">
+                                        History of paying your app
+                                    </h3>
+                                    <p class="benefits__item-description">
+                                        The history of paying is stored in
+                                        memory of browser you use, so if you
+                                        refresh browser the data of history
+                                        doesn’t appear unless you clear your
+                                        browser memory.
+                                    </p>
+                                </div>
+                            </li>
+                            <li class="benefits__item">
+                                <div class="benefits__item-icon">
+                                    <img
+                                        src="./assets/icons/offline.svg"
+                                        alt=""
+                                    />
+                                </div>
+                                <div class="benefits__item-container">
+                                    <h3 class="benefits__item-title">
+                                        Off-line working
+                                    </h3>
+                                    <p class="benefits__item-description">
+                                        If you won’t have an internet connection
+                                        the app will be work correctly all time.
+                                    </p>
+                                </div>
+                            </li>
+                        </ul>
                     </div>
-                    <div class="card__total-split">
-                        <span class="card__span">Split total</span>
-                        <span
-                            class="card__total-split-cost card__total-split-cost--js"
-                            >$0</span
-                        >
-                    </div>
-                </div>
-                <div class="card">
-                    <div class="card__wallet">
-                        <div class="card__wallet-title">Wallet</div>
-                        <div class="card__wallet-title">Spending</div>
-                    </div>
-                    <div class="card__wallet">
-                        <div
-                            class="card__wallet-amount card__wallet-amount--js"
-                        >
-                            $0
+                </section>
+                <section class="calculator">
+                    <div class="col">
+                        <div class="card">
+                            <input
+                                type="number"
+                                class="card__input card__input--number card__input--number--js"
+                                placeholder="cost of bill"
+                            />
+                            <div class="card__select">
+                                <div class="card__custom-select"></div>
+                            <select
+                                name="currency"
+                                id="currency"
+                                class="card__select card__select--js"
+                            >
+                                <option value="zloty">zł</option>
+                                <option value="dollar">&dollar;</option>
+                                <option value="euro">&euro;</option>
+                                <option value="pound">&pound;</option>
+                            </select>
                         </div>
-                        <div
-                            class="card__wallet-spending card__wallet-spending--js"
-                        >
-                            $0
+                            <input
+                                type="text"
+                                class="card__input card__input--text card__input--text--js"
+                                placeholder="name of bill"
+                            />
+                            <div class="card__ranges">
+                                <div class="card__range-name">Tip</div>
+                                <div class="card__range-percentage">
+                                    <span
+                                        class="card__percentage-tip card__percentage-tip--js"
+                                        >0%</span
+                                    >
+                                    <input
+                                        type="range"
+                                        class="card__percentage-range card__percentage-range--js"
+                                        min="2"
+                                        max="100"
+                                        value="2"
+                                    />
+                                    <span
+                                        class="card__percentage-tip card__percentage-tip-end--js"
+                                        >100%</span
+                                    >
+                                </div>
+                                <div class="card__range-name">Split</div>
+                                <div class="card__range-split">
+                                    <span
+                                        class="card__split-tip card__split-tip--js"
+                                        >1</span
+                                    >
+                                    <input
+                                        type="range"
+                                        class="card__split-range card__split-range--js"
+                                        step="1"
+                                        min="1"
+                                        max="10"
+                                        value="1"
+                                    />
+                                    <span
+                                        class="card__split-tip card__split-tip-end--js"
+                                        >10</span
+                                    >
+                                </div>
+                            </div>
+                            <div class="card__button">
+                                <button class="btn">Calculate</button>
+                            </div>
+                        </div>
+                        <div class="card">
+                            <ul class="card__list">
+                                <li class="card__item">
+                                    Your bill:
+                                    <span
+                                        class="card__item-dark card__item-bill--js"
+                                        >0$</span
+                                    >
+                                </li>
+                                <li class="card__item">
+                                    Name of bill:<span
+                                        class="card__item-dark card__item-name-bill--js"
+                                        >Dinner</span
+                                    >
+                                </li>
+                                <li class="card__item">
+                                    Percent Tip:<span
+                                        class="card__item-dark card__item-percent-tip--js"
+                                        >0%</span
+                                    >
+                                </li>
+                                <li class="card__item">
+                                    Total Tip:<span
+                                        class="card__item-dark card__item-total-tip--js"
+                                        >0%</span
+                                    >
+                                </li>
+                                <li class="card__item">
+                                    Split:<span
+                                        class="card__item-dark card__item-split--js"
+                                        >0</span
+                                    >
+                                </li>
+                                <li class="card__item">
+                                    Bill by person:<span
+                                        class="card__item-dark card__item-bill-person--js"
+                                        >0$</span
+                                    >
+                                </li>
+                                <li class="card__item">
+                                    Tip by person:<span
+                                        class="card__item-dark card__item-bill-tip--js"
+                                        >1$</span
+                                    >
+                                </li>
+                                <li class="card__item">
+                                    Total cost by person:<span
+                                        class="card__item-dark card__item-bill-cost--js"
+                                        >5$</span
+                                    >
+                                </li>
+                            </ul>
                         </div>
                     </div>
-                </div>
-                <div class="add-bill">
-                    <input
-                        type="number"
-                        class="add-bill__input add-bill__input--js"
-                        placeholder="cost of bill"
-                    />
-                    <button class="add-bill__btn add-bill__btn--js">+</button>
-                </div>
-            </section>
+                    <div class="col">
+                        <div class="card">
+                            <div class="card__history">
+                                <h3 class="card__title">
+                                    Mon 23 Dec 2021 - 8.00 am<img src="./assets/icons/delete.svg"
+                                        class="card__delete-history-item"
+                                    ></img>
+                                </h3>
+                                <ul class="card__list card__list--history">
+                                    <li class="card__item card__item--history">
+                                        Your bill:
+                                        <span
+                                            class="card__item-dark card__item-dark--history"
+                                            >0$</span
+                                        >
+                                    </li>
+                                    <li class="card__item card__item--history">
+                                        Name of bill:<span
+                                            class="card__item-dark card__item-dark--history"
+                                            >Dinner</span
+                                        >
+                                    </li>
+                                    <li class="card__item card__item--history">
+                                        Percent Tip:<span
+                                            class="card__item-dark card__item-dark--history"
+                                            >0%</span
+                                        >
+                                    </li>
+                                    <li class="card__item card__item--history">
+                                        Total Tip:<span
+                                            class="card__item-dark card__item-dark--history"
+                                            >0%</span
+                                        >
+                                    </li>
+                                    <li class="card__item card__item--history">
+                                        Split:<span
+                                            class="card__item-dark card__item-dark--history"
+                                            >0</span
+                                        >
+                                    </li>
+                                    <li class="card__item card__item--history">
+                                        Bill by person:<span
+                                            class="card__item-dark card__item-dark--history"
+                                            >0$</span
+                                        >
+                                    </li>
+                                    <li class="card__item card__item--history">
+                                        Tip by person:<span
+                                            class="card__item-dark card__item-dark--history"
+                                            >1$</span
+                                        >
+                                    </li>
+                                    <li class="card__item card__item--history">
+                                        Total cost by person:<span
+                                            class="card__item-dark card__item-dark--history"
+                                            >5$</span
+                                        >
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+            </main>
+            <footer class="footer">
+                All rights reserved by Krzysztof Grudzien - 2021
+            </footer>
         </div>
     </body>
 </html>

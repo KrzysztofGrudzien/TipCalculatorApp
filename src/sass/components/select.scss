@@ -1,0 +1,10 @@
+select {
+    appearance: none;
+    border: none;
+    border: solid 1px $color-grey-300;
+    border-radius: $radius;
+    background-color: $color-grey-100;
+    color: $color-grey-400;
+    font-size: 2rem;
+    padding: 1.5rem 2rem;
+}

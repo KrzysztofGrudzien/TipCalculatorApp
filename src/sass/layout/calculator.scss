@@ -1,0 +1,17 @@
+.calculator {
+    display: flex;
+    justify-content: space-between;
+    left: 50%;
+    position: absolute;
+    top: 29%;
+    transform: translate(-50%, -50%);
+    width: 70%;
+
+    .col {
+        width: 100%;
+
+        &:first-of-type {
+            margin-right: $gap;
+        }
+    }
+}
