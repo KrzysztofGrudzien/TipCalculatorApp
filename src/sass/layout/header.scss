@@ -1,0 +1,11 @@
+.header {
+    display: flex;
+    flex-direction: column;
+    grid-column-start: 1;
+    grid-column-end: 13;
+
+    &__title {
+        padding-top: 3rem;
+        text-transform: uppercase;
+    }
+}

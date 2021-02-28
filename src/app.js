@@ -11,40 +11,43 @@ const addBill = () => {
     let id = IDGenerator();
     let billValue = FormatCost(DOMElements.billInput.value);
 
-    if (billValue <= 0) return;
+    if (billValue > 0) {
+        allBills.push({
+            billValue,
+            id,
+        });
 
-    allBills.push({
-        billValue,
-        id,
-    });
+        DOMElements.billInput.value = '';
 
-    DOMElements.billInput.value = '';
+        const labelContainer = document.createElement('div');
+        labelContainer.classList = 'label';
+        const labelContent = `
+            <span class="label__price">$${billValue}</span> 
+            <img
+                src="./src/assets/icons/clear.svg" 
+                class="label__delete" 
+            /> 
+        `;
+        labelContainer.setAttribute('data-id', `${id}`);
+        labelContainer.innerHTML = labelContent;
+        DOMElements.cardLabels.appendChild(labelContainer);
 
-    const labelContainer = document.createElement('div');
-    labelContainer.setAttribute('class', 'label');
-
-    const labelContent = `
-        <span class="label__price">$${billValue}</span> 
-        <img
-            src="./src/assets/icons/clear.svg" 
-            class="label__delete" 
-        /> 
-    `;
-    labelContainer.innerHTML = labelContent;
-    DOMElements.cardLabels.appendChild(labelContainer);
-
-    for (let bill of allBills) {
-        walletSpending += bill.billValue;
-        walletAmount -= bill.billValue;
+        walletSpending += billValue;
+        walletAmount -= billValue;
 
         DOMElements.walletSpending.textContent = `$${FormatCost(
             walletSpending,
         )}`;
-
         DOMElements.totalCost.textContent = `$${FormatCost(walletSpending)}`;
+        DOMElements.walletAmount.textContent = `$${FormatCost(walletAmount)}`;
+    } else {
+        return;
     }
 
-    DOMElements.walletAmount.textContent = `$${FormatCost(walletAmount)}`;
+    DOMElements.totalSplitCost.textContent = `$${FormatCost(walletSpending)}`;
+    DOMElements.totalTip.textContent = `$${FormatCost(
+        (walletSpending / 100) * 2,
+    )}`;
 };
 
 DOMElements.btnAddBill.addEventListener('click', addBill);

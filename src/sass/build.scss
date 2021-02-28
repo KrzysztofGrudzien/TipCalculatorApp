@@ -1,7 +1,14 @@
 @import './helpers/variables.scss';
 @import './basic.scss';
 @import './layout/layout.scss';
+@import './layout/header.scss';
+@import './layout/main.scss';
+@import './layout/footer.scss';
+@import './layout/hero.scss';
+@import './layout/calculator.scss';
+@import './layout/benefits.scss';
 @import './components/card.scss';
-@import './components/labels.scss';
 @import './components/input.scss';
 @import './components/input-range.scss';
+@import './components/select.scss';
+@import './components/button.scss';

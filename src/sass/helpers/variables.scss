@@ -1,8 +1,14 @@
-$color-primary: #6180e8;
-$color-primary-dark: #1f46c9;
-$color-secondary: #c653ee;
+$color-primary: hsl(245, 17%, 29%);
+$color-secondary: hsl(0, 0%, 100%);
+$color-grey-500: hsl(227, 14%, 45%);
+$color-grey-400: hsl(226, 16%, 64%);
+$color-grey-300: hsl(227, 16%, 89%);
+$color-grey-200: hsl(220, 16%, 96%);
+$color-grey-100: hsl(0, 0%, 98%);
 
-$color-default: #959cb2;
-$color-light: #ffffff;
-$color-error: #e14f46;
-$color-accept: #40bf73;
+$color-red: hsl(358, 78%, 63%);
+$color-green: hsl(144, 50%, 50%);
+$color-blue: hsl(226, 75%, 65%);
+
+$gap: 2rem;
+$radius: 1rem;
