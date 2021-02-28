@@ -35,6 +35,7 @@ const splitRange = document.querySelector('.card__split-range--js');
 const splitTipEnd = document.querySelector('.card__split-tip-end--js');
 const btnCalculate = document.querySelector('.btn--js');
 const btnOpenApp = document.querySelector('.btn--open--js');
+const btnCloseApp = document.querySelector('.btn--close--js');
 const itemBill = document.querySelector('.card__item-bill--js');
 const itemNameBill = document.querySelector('.card__item-name-bill--js');
 const itemPercentTip = document.querySelector('.card__item-percent-tip--js');
@@ -56,6 +57,7 @@ const DOMElements = {
     splitTipEnd,
     btnCalculate,
     btnOpenApp,
+    btnCloseApp,
     splitRange,
     itemBill,
     itemNameBill,

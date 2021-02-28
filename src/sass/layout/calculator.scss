@@ -1,11 +1,11 @@
 .calculator {
-    display: flex;
+    display: none;
     justify-content: space-between;
     left: 50%;
     position: absolute;
     top: 29%;
     transform: translate(-50%, -50%);
-    width: 70%;
+    width: 75%;
 
     .col {
         width: 100%;
