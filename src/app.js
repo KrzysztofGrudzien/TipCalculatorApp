@@ -3,8 +3,54 @@ import DOMElements from './helpers/DOMElements';
 import IDGenerator from './helpers/IDGenerator';
 import FormatCost from './helpers/FormatCost';
 
+const history = [];
+
 const calculateBill = () => {
-    console.log('ok');
+    let id = IDGenerator();
+    let billPriceValue = FormatCost(DOMElements.inputNumber.value);
+    let billCurrencyValue = DOMElements.selectCurrency.value;
+    let billNameValue = DOMElements.inputText.value;
+    let billPercentTipValue = +DOMElements.percentageRange.value;
+    let billSplitTipValue = +DOMElements.splitRange.value;
+    let currency = `${
+        billCurrencyValue === 'dollar'
+            ? '$'
+            : billCurrencyValue === 'euro'
+            ? '€'
+            : billCurrencyValue === 'pound'
+            ? '£'
+            : 'zł'
+    } `;
+
+    history.push({
+        id,
+        billPriceValue,
+        billCurrencyValue,
+        billNameValue,
+        billPercentTipValue,
+        billSplitTipValue,
+    });
+
+    DOMElements.itemBill.textContent = `${billPriceValue}${currency}`;
+    DOMElements.itemNameBill.textContent = billNameValue;
+    DOMElements.itemPercentTip.textContent = `${billPercentTipValue}%`;
+    DOMElements.itemSplit.textContent = billSplitTipValue;
+    DOMElements.itemTotalTip.textContent = `${FormatCost(
+        billPriceValue * billPercentTipValue * 0.01,
+    )}${currency}`;
+    DOMElements.itemBillPerson.textContent = `${FormatCost(
+        billPriceValue / billSplitTipValue,
+    )}${currency}`;
+    DOMElements.itemBillTip.textContent = `${FormatCost(
+        (billPriceValue * billPercentTipValue * 0.01) / billSplitTipValue,
+    )}${currency}`;
+    DOMElements.itemBillCost.textContent = `${FormatCost(
+        (billPriceValue * billPercentTipValue * 0.01) / billSplitTipValue +
+            billPriceValue / billSplitTipValue,
+    )}${currency}`;
+
+    DOMElements.inputNumber.value = '';
+    DOMElements.inputText.value = '';
 };
 
 DOMElements.btnCalculate.addEventListener('click', calculateBill);
@@ -20,6 +66,18 @@ const closeApp = () => {
 };
 
 DOMElements.btnCloseApp.addEventListener('click', closeApp);
+
+const calculatePercentTip = e => {
+    DOMElements.percentageTipEnd.textContent = `${e.target.value}%`;
+};
+
+DOMElements.percentageRange.addEventListener('input', calculatePercentTip);
+
+const calculateSplitTip = e => {
+    DOMElements.splitTipEnd.textContent = e.target.value;
+};
+
+DOMElements.splitRange.addEventListener('input', calculateSplitTip);
 
 // const allBills = [];
 //
@@ -84,5 +142,4 @@ DOMElements.btnCloseApp.addEventListener('click', closeApp);
 // )}`;
 // };
 //
-// DOMElements.splitRange.addEventListener('input', splitTip);
-//
+// DOMElements.splitRange.addEventListener('input', splitTip)
