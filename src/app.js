@@ -2,8 +2,10 @@ import './sass/build.scss';
 import DOMElements from './helpers/DOMElements';
 import IDGenerator from './helpers/IDGenerator';
 import FormatCost from './helpers/FormatCost';
+import moment from 'moment';
 
 const history = [];
+let date = moment().format('llll');
 
 const calculateBill = () => {
     let id = IDGenerator();
@@ -29,6 +31,7 @@ const calculateBill = () => {
         billNameValue,
         billPercentTipValue,
         billSplitTipValue,
+        date,
     });
 
     DOMElements.itemBill.textContent = `${billPriceValue}${currency}`;
@@ -51,6 +54,8 @@ const calculateBill = () => {
 
     DOMElements.inputNumber.value = '';
     DOMElements.inputText.value = '';
+
+    console.log(history);
 };
 
 DOMElements.btnCalculate.addEventListener('click', calculateBill);
