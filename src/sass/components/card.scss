@@ -120,12 +120,16 @@
     }
 
     &__history {
+        margin-bottom: 2rem;
         width: 100%;
     }
 
     &__title {
-        background-color: $color-grey-300;
+        background: $color-grey-300 url('./../assets/icons/delete.svg');
+        background-repeat: no-repeat;
+        background-position: right center;
         border-radius: $radius;
+        border-right: 1rem solid $color-grey-300;
         color: $color-grey-400;
         display: flex;
         font-size: 2rem;

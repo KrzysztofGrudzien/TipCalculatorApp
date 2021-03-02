@@ -24,16 +24,6 @@ const calculateBill = () => {
             : 'zł'
     } `;
 
-    history.push({
-        id,
-        billPriceValue,
-        billCurrencyValue,
-        billNameValue,
-        billPercentTipValue,
-        billSplitTipValue,
-        date,
-    });
-
     DOMElements.itemBill.textContent = `${billPriceValue}${currency}`;
     DOMElements.itemNameBill.textContent = billNameValue;
     DOMElements.itemPercentTip.textContent = `${billPercentTipValue}%`;
@@ -55,7 +45,82 @@ const calculateBill = () => {
     DOMElements.inputNumber.value = '';
     DOMElements.inputText.value = '';
 
-    console.log(history);
+    const cardHistory = document.createElement('div');
+    cardHistory.setAttribute('class', 'card__history');
+    cardHistory.id = id;
+    cardHistory.innerHTML = `<h3 class="card__title">
+            ${date}
+            >
+        </h3>
+        <ul class="card__list card__list--history">
+            <li class="card__item card__item--history">
+                Your bill:
+                <span
+                    class="card__item-dark card__item-dark--history"
+                    >${DOMElements.itemBill.textContent}</span
+                >
+            </li>
+            <li class="card__item card__item--history">
+                Name of bill:<span
+                    class="card__item-dark card__item-dark--history"
+                    >${DOMElements.itemNameBill.textContent}</span
+                >
+            </li>
+            <li class="card__item card__item--history">
+                Percent Tip:<span
+                    class="card__item-dark card__item-dark--history"
+                    >${DOMElements.itemPercentTip.textContent}</span
+                >
+            </li>
+            <li class="card__item card__item--history">
+                Total Tip:<span
+                    class="card__item-dark card__item-dark--history"
+                    >${DOMElements.itemTotalTip.textContent}</span
+                >
+            </li>
+            <li class="card__item card__item--history">
+                Split:<span
+                    class="card__item-dark card__item-dark--history"
+                    >${DOMElements.itemSplit.textContent}</span
+                >
+            </li>
+            <li class="card__item card__item--history">
+                Bill by person:<span
+                    class="card__item-dark card__item-dark--history"
+                    >${DOMElements.itemBillPerson.textContent}</span
+                >
+            </li>
+            <li class="card__item card__item--history">
+                Tip by person:<span
+                    class="card__item-dark card__item-dark--history"
+                    >${DOMElements.itemBillTip.textContent}</span
+                >
+            </li>
+            <li class="card__item card__item--history">
+                Total cost by person:<span
+                    class="card__item-dark card__item-dark--history"
+                    >${DOMElements.itemBillCost.textContent}</span
+                >
+            </li>
+        </ul>`;
+    history.push(cardHistory);
+    updateHistoryBill();
+
+    const deleteCard = cardHistory.querySelector('.card__title');
+    deleteCard.addEventListener('click', removeHistoryBill);
+};
+
+const removeHistoryBill = e => {
+    const index = e.target.parentNode.dataset.id;
+    history.splice(index, 1);
+    updateHistoryBill();
+};
+const updateHistoryBill = () => {
+    DOMElements.card.textContent = '';
+    history.forEach((historyItem, key) => {
+        historyItem.dataset.id = key;
+        DOMElements.card.appendChild(historyItem);
+    });
 };
 
 DOMElements.btnCalculate.addEventListener('click', calculateBill);
@@ -83,68 +148,3 @@ const calculateSplitTip = e => {
 };
 
 DOMElements.splitRange.addEventListener('input', calculateSplitTip);
-
-// const allBills = [];
-//
-// const calculateBill = () => {
-// let id = IDGenerator();
-// let billValue = FormatCost(DOMElements.billInput.value);
-//
-// if (billValue > 0) {
-// allBills.push({
-// billValue,
-// id,
-// });
-//
-// DOMElements.billInput.value = '';
-//
-// const labelContainer = document.createElement('div');
-// labelContainer.classList = 'label';
-// const labelContent = `
-// <span class="label__price">$${billValue}</span>
-// <img
-// src="./src/assets/icons/clear.svg"
-// class="label__delete"
-// />
-// `;
-// labelContainer.setAttribute('data-id', `${id}`);
-// labelContainer.innerHTML = labelContent;
-// DOMElements.cardLabels.appendChild(labelContainer);
-//
-// walletSpending += billValue;
-// walletAmount -= billValue;
-//
-// DOMElements.walletSpending.textContent = `$${FormatCost(
-// walletSpending,
-// )}`;
-// DOMElements.totalCost.textContent = `$${FormatCost(walletSpending)}`;
-// DOMElements.walletAmount.textContent = `$${FormatCost(walletAmount)}`;
-// } else {
-// return;
-// }
-//
-// DOMElements.totalSplitCost.textContent = `$${FormatCost(walletSpending)}`;
-// DOMElements.totalTip.textContent = `$${FormatCost(
-// (walletSpending / 100) * 2,
-// )}`;
-// };
-//
-// DOMElements.btnAddBill.addEventListener('click', calculateBill);
-//
-// const percentTip = e => {
-// DOMElements.percentageTip.textContent = `${e.target.value}%`;
-// DOMElements.totalTip.textContent = `$${FormatCost(
-// (e.target.value * walletSpending) / 100,
-// )}`;
-// };
-//
-// DOMElements.percentageRange.addEventListener('input', percentTip);
-//
-// const splitTip = e => {
-// DOMElements.splitTip.textContent = e.target.value;
-// DOMElements.totalSplitCost.textContent = `$${FormatCost(
-// walletSpending / e.target.value,
-// )}`;
-// };
-//
-// DOMElements.splitRange.addEventListener('input', splitTip)

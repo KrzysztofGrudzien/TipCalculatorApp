@@ -45,6 +45,7 @@ const itemBillPerson = document.querySelector('.card__item-bill-person--js');
 const itemBillTip = document.querySelector('.card__item-bill-tip--js');
 const itemBillCost = document.querySelector('.card__item-bill-cost--js');
 const calculator = document.querySelector('.calculator--js');
+const card = document.querySelector('.card--js');
 
 const DOMElements = {
     inputNumber,
@@ -68,6 +69,7 @@ const DOMElements = {
     itemBillTip,
     itemBillCost,
     calculator,
+    card,
 };
 
 export default DOMElements;
