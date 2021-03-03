@@ -1,0 +1,95 @@
+.square-1,
+.square-2,
+.triangle-1,
+.triangle-2,
+.triangle-3,
+.circle-1,
+.circle-2,
+.circle-3 {
+    position: absolute;
+}
+
+.square-1 {
+    background-color: $color-green;
+    height: 10%;
+    left: 30%;
+    opacity: 0.1;
+    top: -5rem;
+    width: 10%;
+}
+
+.square-2 {
+    background-color: $color-green;
+    height: 3.5%;
+    left: 40%;
+    opacity: 0.1;
+    top: 65%;
+    transform: rotate(45deg);
+    width: 3%;
+}
+
+.circle-1 {
+    background-color: $color-red;
+    border-radius: 50%;
+    height: 10%;
+    opacity: 0.1;
+    top: 32%;
+    right: 0;
+    width: 8.5%;
+}
+
+.circle-2 {
+    background-color: $color-red;
+    border-radius: 50%;
+    height: 5%;
+    left: 20%;
+    opacity: 0.1;
+    top: 32%;
+    width: 4%;
+}
+
+.circle-3 {
+    background-color: $color-red;
+    border-radius: 50%;
+    bottom: 0;
+    height: 5%;
+    opacity: 0.1;
+    right: 30%;
+    width: 4%;
+}
+
+.triangle-1 {
+    border-left: 50px solid transparent;
+    border-right: 50px solid transparent;
+    border-bottom: 75px solid $color-blue;
+    height: 0;
+    opacity: 0.1;
+    right: 40%;
+    top: 35%;
+    transform: rotate(-45deg);
+    width: 0;
+}
+
+.triangle-2 {
+    border-left: 50px solid transparent;
+    border-right: 50px solid transparent;
+    border-bottom: 75px solid $color-blue;
+    height: 0;
+    opacity: 0.1;
+    right: 10%;
+    bottom: 10%;
+    transform: rotate(45deg);
+    width: 0;
+}
+
+.triangle-3 {
+    border-left: 100px solid transparent;
+    border-right: 100px solid transparent;
+    border-bottom: 105px solid $color-blue;
+    height: 0;
+    opacity: 0.1;
+    left: 0;
+    bottom: 10%;
+    transform: rotate(-12deg);
+    width: 0;
+}
