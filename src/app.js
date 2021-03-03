@@ -1,53 +1,60 @@
 import './sass/build.scss';
 import DOMElements from './helpers/DOMElements';
-import IDGenerator from './helpers/IDGenerator';
-import FormatCost from './helpers/FormatCost';
+import constant from './helpers/constants';
 import moment from 'moment';
+import getFormatCost from './helpers/getFormatCost';
+import getCountTotalTip from './helpers/getCountTotalTip';
+import getCountBillByPerson from './helpers/getCountBillByPerson';
+import getCountTip from './helpers/getCountTip';
+import getCountTotalBillCost from './helpers/getCountTotalBillCost';
 
 const history = [];
 let date = moment().format('llll');
 
-const calculateBill = () => {
-    let id = IDGenerator();
-    let billPriceValue = FormatCost(DOMElements.inputNumber.value);
-    let billCurrencyValue = DOMElements.selectCurrency.value;
-    let billNameValue = DOMElements.inputText.value;
-    let billPercentTipValue = +DOMElements.percentageRange.value;
-    let billSplitTipValue = +DOMElements.splitRange.value;
-    let currency = `${
-        billCurrencyValue === 'dollar'
+const updateCalculation = () => {
+    const billPriceValue = getFormatCost(DOMElements.costBill.value);
+    const billCurrencyValue = DOMElements.selectCurrency.value;
+    const billNameValue = DOMElements.nameBill.value;
+    const billPercentTipValue = +DOMElements.percentageTipRange.value;
+    const billSplitTipValue = +DOMElements.splitTipRange.value;
+    const currency = `${
+        billCurrencyValue === `${constant.dollar}`
             ? '$'
-            : billCurrencyValue === 'euro'
+            : billCurrencyValue === `${constant.euro}`
             ? '€'
-            : billCurrencyValue === 'pound'
+            : billCurrencyValue === `${constant.pound}`
             ? '£'
             : 'zł'
     } `;
 
-    DOMElements.itemBill.textContent = `${billPriceValue}${currency}`;
-    DOMElements.itemNameBill.textContent = billNameValue;
-    DOMElements.itemPercentTip.textContent = `${billPercentTipValue}%`;
-    DOMElements.itemSplit.textContent = billSplitTipValue;
-    DOMElements.itemTotalTip.textContent = `${FormatCost(
-        billPriceValue * billPercentTipValue * 0.01,
+    if (isNaN(billPriceValue) || billPriceValue <= 0) return;
+
+    DOMElements.costBillText.textContent = `${billPriceValue}${currency}`;
+    DOMElements.nameBillText.textContent = billNameValue;
+    DOMElements.percentTipText.textContent = `${billPercentTipValue}%`;
+    DOMElements.splitText.textContent = billSplitTipValue;
+    DOMElements.totalTipText.textContent = `${getFormatCost(
+        getCountTotalTip(billPriceValue, billPercentTipValue),
     )}${currency}`;
-    DOMElements.itemBillPerson.textContent = `${FormatCost(
-        billPriceValue / billSplitTipValue,
+    DOMElements.billByPersonText.textContent = `${getFormatCost(
+        getCountBillByPerson(billPriceValue, billSplitTipValue),
     )}${currency}`;
-    DOMElements.itemBillTip.textContent = `${FormatCost(
-        (billPriceValue * billPercentTipValue * 0.01) / billSplitTipValue,
+    DOMElements.billTipText.textContent = `${getFormatCost(
+        getCountTip(billPriceValue, billPercentTipValue, billSplitTipValue),
     )}${currency}`;
-    DOMElements.itemBillCost.textContent = `${FormatCost(
-        (billPriceValue * billPercentTipValue * 0.01) / billSplitTipValue +
-            billPriceValue / billSplitTipValue,
+    DOMElements.totalBillCostText.textContent = `${getFormatCost(
+        getCountTotalBillCost(
+            billPriceValue,
+            billPercentTipValue,
+            billSplitTipValue,
+        ),
     )}${currency}`;
 
-    DOMElements.inputNumber.value = '';
-    DOMElements.inputText.value = '';
+    DOMElements.costBill.value = '';
+    DOMElements.nameBill.value = '';
 
     const cardHistory = document.createElement('div');
     cardHistory.setAttribute('class', 'card__history');
-    cardHistory.id = id;
     cardHistory.innerHTML = `<h3 class="card__title">
             ${date}
             >
@@ -57,49 +64,49 @@ const calculateBill = () => {
                 Your bill:
                 <span
                     class="card__item-dark card__item-dark--history"
-                    >${DOMElements.itemBill.textContent}</span
+                    >${DOMElements.costBillText.textContent}</span
                 >
             </li>
             <li class="card__item card__item--history">
                 Name of bill:<span
                     class="card__item-dark card__item-dark--history"
-                    >${DOMElements.itemNameBill.textContent}</span
+                    >${DOMElements.nameBillText.textContent}</span
                 >
             </li>
             <li class="card__item card__item--history">
                 Percent Tip:<span
                     class="card__item-dark card__item-dark--history"
-                    >${DOMElements.itemPercentTip.textContent}</span
+                    >${DOMElements.percentTipText.textContent}</span
                 >
             </li>
             <li class="card__item card__item--history">
                 Total Tip:<span
                     class="card__item-dark card__item-dark--history"
-                    >${DOMElements.itemTotalTip.textContent}</span
+                    >${DOMElements.totalTipText.textContent}</span
                 >
             </li>
             <li class="card__item card__item--history">
                 Split:<span
                     class="card__item-dark card__item-dark--history"
-                    >${DOMElements.itemSplit.textContent}</span
+                    >${DOMElements.splitText.textContent}</span
                 >
             </li>
             <li class="card__item card__item--history">
                 Bill by person:<span
                     class="card__item-dark card__item-dark--history"
-                    >${DOMElements.itemBillPerson.textContent}</span
+                    >${DOMElements.billByPersonText.textContent}</span
                 >
             </li>
             <li class="card__item card__item--history">
                 Tip by person:<span
                     class="card__item-dark card__item-dark--history"
-                    >${DOMElements.itemBillTip.textContent}</span
+                    >${DOMElements.billTipText.textContent}</span
                 >
             </li>
             <li class="card__item card__item--history">
                 Total cost by person:<span
                     class="card__item-dark card__item-dark--history"
-                    >${DOMElements.itemBillCost.textContent}</span
+                    >${DOMElements.totalBillCostText.textContent}</span
                 >
             </li>
         </ul>`;
@@ -115,6 +122,7 @@ const removeHistoryBill = e => {
     history.splice(index, 1);
     updateHistoryBill();
 };
+
 const updateHistoryBill = () => {
     DOMElements.card.textContent = '';
     history.forEach((historyItem, key) => {
@@ -123,28 +131,37 @@ const updateHistoryBill = () => {
     });
 };
 
-DOMElements.btnCalculate.addEventListener('click', calculateBill);
+DOMElements.btnCalculate.addEventListener(
+    `${constant.click}`,
+    updateCalculation,
+);
 
-const showApp = () => {
+const openApp = () => {
     DOMElements.calculator.style.display = 'flex';
 };
 
-DOMElements.btnOpenApp.addEventListener('click', showApp);
+DOMElements.btnOpenApp.addEventListener(`${constant.click}`, openApp);
 
 const closeApp = () => {
     DOMElements.calculator.style.display = 'none';
 };
 
-DOMElements.btnCloseApp.addEventListener('click', closeApp);
+DOMElements.btnCloseApp.addEventListener(`${constant.click}`, closeApp);
 
 const calculatePercentTip = e => {
     DOMElements.percentageTipEnd.textContent = `${e.target.value}%`;
 };
 
-DOMElements.percentageRange.addEventListener('input', calculatePercentTip);
+DOMElements.percentageTipRange.addEventListener(
+    `${constant.input}`,
+    calculatePercentTip,
+);
 
 const calculateSplitTip = e => {
     DOMElements.splitTipEnd.textContent = e.target.value;
 };
 
-DOMElements.splitRange.addEventListener('input', calculateSplitTip);
+DOMElements.splitTipRange.addEventListener(
+    `${constant.input}`,
+    calculateSplitTip,
+);
