@@ -12,26 +12,23 @@ import getCurrencyValue from './helpers/getCurrencyValue';
 const history = [];
 let date = moment().format('llll');
 
-const currencyDollar = document.querySelector('.currency__dollar');
-const currencyEuro = document.querySelector('.currency__euro');
-const currencyPound = document.querySelector('.currency__pound');
-
 getCurrencyValue(constant.apiUrl.USD).then(
-    currencyInfo => (currencyDollar.textContent = getFormatCost(currencyInfo)),
+    currencyInfo =>
+        (DOMElements.currencyDollar.textContent = getFormatCost(currencyInfo)),
 );
 
 getCurrencyValue(constant.apiUrl.EURO).then(
-    currencyInfo => (currencyEuro.textContent = getFormatCost(currencyInfo)),
+    currencyInfo =>
+        (DOMElements.currencyEuro.textContent = getFormatCost(currencyInfo)),
 );
 
 getCurrencyValue(constant.apiUrl.GBP).then(
-    currencyInfo => (currencyPound.textContent = getFormatCost(currencyInfo)),
+    currencyInfo =>
+        (DOMElements.currencyPound.textContent = getFormatCost(currencyInfo)),
 );
 
 const updateCalculation = () => {
-    const billPriceValue = getFormatCost(
-        DOMElements.costBill.value * currencyEuro.textContent,
-    );
+    let billPriceValue = DOMElements.costBill.value;
     const billCurrencyValue = DOMElements.selectCurrency.value;
     const billNameValue = DOMElements.nameBill.value;
     const billPercentTipValue = +DOMElements.percentageTipRange.value;
@@ -47,6 +44,22 @@ const updateCalculation = () => {
     } `;
 
     if (isNaN(billPriceValue) || billPriceValue <= 0) return;
+
+    if (billCurrencyValue === constant.dollar) {
+        billPriceValue = getFormatCost(
+            DOMElements.costBill.value * DOMElements.currencyDollar.textContent,
+        );
+    } else if (billCurrencyValue === constant.pound) {
+        billPriceValue = getFormatCost(
+            DOMElements.costBill.value * DOMElements.currencyPound.textContent,
+        );
+    } else if (billCurrencyValue === constant.euro) {
+        billPriceValue = getFormatCost(
+            DOMElements.costBill.value * DOMElements.currencyEuro.textContent,
+        );
+    } else {
+        billPriceValue = getFormatCost(DOMElements.costBill.value);
+    }
 
     DOMElements.costBillText.textContent = `${billPriceValue}${currency}`;
     DOMElements.nameBillText.textContent = billNameValue;
