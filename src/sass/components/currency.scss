@@ -1,0 +1,22 @@
+.currency {
+    align-items: center;
+    background-color: $color-secondary;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.15);
+    border-radius: 0 1rem 1rem 0;
+    color: $color-primary;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    font-weight: 700;
+    height: 12rem;
+    left: 0;
+    padding: 2rem;
+    position: fixed;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 13rem;
+
+    &__row {
+        display: flex;
+    }
+}
