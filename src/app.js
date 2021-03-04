@@ -7,12 +7,31 @@ import getCountTotalTip from './helpers/getCountTotalTip';
 import getCountBillByPerson from './helpers/getCountBillByPerson';
 import getCountTip from './helpers/getCountTip';
 import getCountTotalBillCost from './helpers/getCountTotalBillCost';
+import getCurrencyValue from './helpers/getCurrencyValue';
 
 const history = [];
 let date = moment().format('llll');
 
+const currencyDollar = document.querySelector('.currency__dollar');
+const currencyEuro = document.querySelector('.currency__euro');
+const currencyPound = document.querySelector('.currency__pound');
+
+getCurrencyValue(constant.apiUrl.USD).then(
+    currencyInfo => (currencyDollar.textContent = getFormatCost(currencyInfo)),
+);
+
+getCurrencyValue(constant.apiUrl.EURO).then(
+    currencyInfo => (currencyEuro.textContent = getFormatCost(currencyInfo)),
+);
+
+getCurrencyValue(constant.apiUrl.GBP).then(
+    currencyInfo => (currencyPound.textContent = getFormatCost(currencyInfo)),
+);
+
 const updateCalculation = () => {
-    const billPriceValue = getFormatCost(DOMElements.costBill.value);
+    const billPriceValue = getFormatCost(
+        DOMElements.costBill.value * currencyEuro.textContent,
+    );
     const billCurrencyValue = DOMElements.selectCurrency.value;
     const billNameValue = DOMElements.nameBill.value;
     const billPercentTipValue = +DOMElements.percentageTipRange.value;
