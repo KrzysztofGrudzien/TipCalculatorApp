@@ -181,13 +181,16 @@ DOMElements.btnCalculate.addEventListener(
 );
 
 const openApp = () => {
+    DOMElements.calculator.classList.add('calculator--up');
+    DOMElements.calculator.classList.remove('calculator--down');
     DOMElements.calculator.style.display = 'flex';
 };
 
 DOMElements.btnOpenApp.addEventListener(`${constant.click}`, openApp);
 
 const closeApp = () => {
-    DOMElements.calculator.style.display = 'none';
+    DOMElements.calculator.classList.remove('calculator--up');
+    DOMElements.calculator.classList.add('calculator--down');
 };
 
 DOMElements.btnCloseApp.addEventListener(`${constant.click}`, closeApp);
