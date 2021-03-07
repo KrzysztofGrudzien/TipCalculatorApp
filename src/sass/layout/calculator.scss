@@ -1,10 +1,12 @@
 .calculator {
-    display: none;
+    display: flex;
     justify-content: space-between;
     left: 50%;
     position: absolute;
-    top: 29%;
+    opacity: 0;
+    top: -100%;
     transform: translate(-50%, -50%);
+    transition: top 0.5s ease-in-out, opacity 0.5s ease-in-out;
     width: 75%;
 
     .col {
@@ -17,5 +19,15 @@
         &:last-of-type {
             max-height: 90vh;
         }
+    }
+
+    &--up {
+        top: 29%;
+        opacity: 1;
+    }
+
+    &--down {
+        top: -100%;
+        opacity: 0;
     }
 }

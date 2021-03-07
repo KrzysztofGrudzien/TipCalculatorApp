@@ -47,15 +47,15 @@ const updateCalculation = () => {
 
     if (billCurrencyValue === constant.dollar) {
         billPriceValue = getFormatCost(
-            DOMElements.costBill.value * DOMElements.currencyDollar.textContent,
+            DOMElements.costBill.value / DOMElements.currencyDollar.textContent,
         );
     } else if (billCurrencyValue === constant.pound) {
         billPriceValue = getFormatCost(
-            DOMElements.costBill.value * DOMElements.currencyPound.textContent,
+            DOMElements.costBill.value / DOMElements.currencyPound.textContent,
         );
     } else if (billCurrencyValue === constant.euro) {
         billPriceValue = getFormatCost(
-            DOMElements.costBill.value * DOMElements.currencyEuro.textContent,
+            DOMElements.costBill.value / DOMElements.currencyEuro.textContent,
         );
     } else {
         billPriceValue = getFormatCost(DOMElements.costBill.value);
@@ -86,7 +86,7 @@ const updateCalculation = () => {
     DOMElements.nameBill.value = '';
 
     const cardHistory = document.createElement('div');
-    cardHistory.setAttribute('class', 'card__history');
+    cardHistory.setAttribute('class', 'card__history card__history--js');
     cardHistory.innerHTML = `<h3 class="card__title">
             ${date}
             >
@@ -147,12 +147,20 @@ const updateCalculation = () => {
 
     const deleteCard = cardHistory.querySelector('.card__title');
     deleteCard.addEventListener('click', removeHistoryBill);
+
+    if (history.length > 0) {
+        DOMElements.historyOfBillsColumn.style.display = 'block';
+    }
 };
 
 const removeHistoryBill = e => {
-    const index = e.target.parentNode.dataset.id;
-    history.splice(index, 1);
-    updateHistoryBill();
+    const historyCard = document.querySelector('.card__history');
+    e.target.parentNode.classList.add('card__fall-down');
+    historyCard.addEventListener('transitionend', () => {
+        const index = e.target.parentNode.dataset.id;
+        history.splice(index, 1);
+        updateHistoryBill();
+    });
 };
 
 const updateHistoryBill = () => {
@@ -161,6 +169,10 @@ const updateHistoryBill = () => {
         historyItem.dataset.id = key;
         DOMElements.card.appendChild(historyItem);
     });
+
+    if (history.length <= 1) {
+        DOMElements.historyOfBillsColumn.style.display = 'none';
+    }
 };
 
 DOMElements.btnCalculate.addEventListener(
@@ -169,13 +181,16 @@ DOMElements.btnCalculate.addEventListener(
 );
 
 const openApp = () => {
+    DOMElements.calculator.classList.add('calculator--up');
+    DOMElements.calculator.classList.remove('calculator--down');
     DOMElements.calculator.style.display = 'flex';
 };
 
 DOMElements.btnOpenApp.addEventListener(`${constant.click}`, openApp);
 
 const closeApp = () => {
-    DOMElements.calculator.style.display = 'none';
+    DOMElements.calculator.classList.remove('calculator--up');
+    DOMElements.calculator.classList.add('calculator--down');
 };
 
 DOMElements.btnCloseApp.addEventListener(`${constant.click}`, closeApp);

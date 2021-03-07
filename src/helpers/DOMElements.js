@@ -24,9 +24,13 @@ const billTipText = document.querySelector('.card__item-bill-tip--js');
 const totalBillCostText = document.querySelector('.card__item-bill-cost--js');
 const calculator = document.querySelector('.calculator--js');
 const card = document.querySelector('.card--js');
+const cardHistory = document.querySelector('.card__history--js');
 const currencyDollar = document.querySelector('.currency__dollar--js');
 const currencyEuro = document.querySelector('.currency__euro--js');
 const currencyPound = document.querySelector('.currency__pound--js');
+const historyOfBillsColumn = document.querySelector(
+    '.calculator .col--js:last-of-type',
+);
 
 const DOMElements = {
     costBill,
@@ -51,9 +55,11 @@ const DOMElements = {
     totalBillCostText,
     calculator,
     card,
+    cardHistory,
     currencyDollar,
     currencyEuro,
     currencyPound,
+    historyOfBillsColumn,
 };
 
 export default DOMElements;
