@@ -29,7 +29,7 @@ const currencyDollar = document.querySelector('.currency__dollar--js');
 const currencyEuro = document.querySelector('.currency__euro--js');
 const currencyPound = document.querySelector('.currency__pound--js');
 const historyOfBillsColumn = document.querySelector(
-    '.calculator .col:last-of-type',
+    '.calculator .col--js:last-of-type',
 );
 
 const DOMElements = {
