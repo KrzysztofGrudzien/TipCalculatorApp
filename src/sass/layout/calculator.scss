@@ -9,6 +9,13 @@
     transition: top 0.5s ease-in-out, opacity 0.5s ease-in-out;
     width: 75%;
 
+    @media only screen and (max-width: 1000px) {
+        flex-direction: column;
+        margin-top: -50%;
+        transform: translate(-50%, 0);
+        width: 95%;
+    }
+
     .col {
         width: 100%;
 
