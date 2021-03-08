@@ -24,6 +24,9 @@ const billTipText = document.querySelector('.card__item-bill-tip--js');
 const totalBillCostText = document.querySelector('.card__item-bill-cost--js');
 const calculator = document.querySelector('.calculator--js');
 const card = document.querySelector('.card--js');
+const cards = document.querySelectorAll('.card');
+const cardItems = document.querySelectorAll('.card__item');
+const cardItemsDark = document.querySelectorAll('.card__item-dark');
 const cardHistory = document.querySelector('.card__history--js');
 const currencyDollar = document.querySelector('.currency__dollar--js');
 const currencyEuro = document.querySelector('.currency__euro--js');
@@ -31,6 +34,9 @@ const currencyPound = document.querySelector('.currency__pound--js');
 const historyOfBillsColumn = document.querySelector(
     '.calculator .col--js:last-of-type',
 );
+const customCheckbox = document.querySelector('.col__input--js');
+const modeIconSun = document.querySelector('.col__mode-icon-sun--js');
+const modeIconMoon = document.querySelector('.col__mode-icon-moon--js');
 
 const DOMElements = {
     costBill,
@@ -60,6 +66,12 @@ const DOMElements = {
     currencyEuro,
     currencyPound,
     historyOfBillsColumn,
+    customCheckbox,
+    cards,
+    cardItems,
+    cardItemsDark,
+    modeIconSun,
+    modeIconMoon,
 };
 
 export default DOMElements;

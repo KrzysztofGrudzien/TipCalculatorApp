@@ -51,18 +51,18 @@
             opacity: 0;
 
             &:checked ~ .col__checkbox-circle {
-                left: 2rem;
+                left: 2.4rem;
             }
         }
 
         &__checkbox-circle {
             background-color: $color-grey-400;
             border-radius: 50%;
-            border: solid 1px $color-grey-500;
+            border: solid 2px $color-grey-500;
             cursor: pointer;
             display: block;
             height: 2.3rem;
-            left: 0;
+            left: -1px;
             position: absolute;
             top: -1px;
             transition: left 0.3s ease-in-out;
@@ -72,7 +72,7 @@
         &__mode-icon {
             left: -4rem;
             position: absolute;
-            top: -0.4rem;
+            top: 0;
         }
     }
 

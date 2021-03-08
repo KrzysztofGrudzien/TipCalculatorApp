@@ -212,3 +212,31 @@ DOMElements.splitTipRange.addEventListener(
     `${constant.input}`,
     calculateSplitTip,
 );
+
+DOMElements.customCheckbox.addEventListener('click', e => {
+    if (e.target.checked) {
+        DOMElements.cards.forEach(
+            card => (card.style.backgroundColor = 'hsl(245, 17%, 29%)'),
+        );
+        DOMElements.cardItems.forEach(
+            cardItem => (cardItem.style.color = 'hsl(0, 0%, 100%)'),
+        );
+        DOMElements.cardItemsDark.forEach(
+            cardItemDark => (cardItemDark.style.color = 'hsl(0, 0%, 100%)'),
+        );
+        DOMElements.modeIconSun.style.display = 'none';
+        DOMElements.modeIconMoon.style.display = 'block';
+    } else {
+        DOMElements.cards.forEach(
+            card => (card.style.backgroundColor = 'hsl(0, 0%, 100%)'),
+        );
+        DOMElements.cardItems.forEach(
+            cardItem => (cardItem.style.color = 'hsl(226, 16%, 64%)'),
+        );
+        DOMElements.cardItemsDark.forEach(
+            cardItemDark => (cardItemDark.style.color = 'hsl(245, 17%, 29%)'),
+        );
+        DOMElements.modeIconSun.style.display = 'block';
+        DOMElements.modeIconMoon.style.display = 'none';
+    }
+});
