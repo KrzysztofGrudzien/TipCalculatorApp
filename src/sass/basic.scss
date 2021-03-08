@@ -9,6 +9,10 @@
 html {
     box-sizing: border-box;
     font-size: 62.5%;
+
+    @media only screen and (max-width: 1200px) {
+        font-size: 50%;
+    }
 }
 
 body {
@@ -53,6 +57,10 @@ p {
 button {
     border: none;
     border-radius: 5rem;
+
+    @media only screen and (max-width: 1000px) {
+        border-radius: 10rem;
+    }
     cursor: pointer;
     padding: 1.5rem 3.5rem;
 }
